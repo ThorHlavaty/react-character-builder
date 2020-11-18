@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Races from './components/races/Races';
+import Classes from './components/classes/Classes';
+import DndHeader from './components/DndHeader/DndHeader';
+import HomePage from './components/HomePage/HomePage';
+import { Route, Switch } from 'react-router-dom';
+import FinishingTouches from './components/FinishingTouches/FinishingTouches';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DndHeader />
+      <Switch>
+      <Route path='/' exact component={HomePage} />
+      <Route path='/races' component={Races} />
+      <Route path='/classes' component={Classes} />
+      <Route path='/stats' component={FinishingTouches} />
+      </Switch>
     </div>
   );
 }
