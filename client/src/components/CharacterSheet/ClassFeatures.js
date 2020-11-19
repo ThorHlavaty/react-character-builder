@@ -8,11 +8,11 @@ export default function ClassFeatures(props) {
   const [spellCaster, setSpellcaster] = useState(false)
   const [accordionIndex, setAccordionIndex] = useState(-1)
   const [classProficiencies, setClassProficiencies] = useState([])
-  const className = useSelector(state=>state.classSelection)
+  const classSelection = useSelector(state=>state.classSelection)
   const [loaded, setLoaded] = useState(false)
   
   useEffect(() => {
-    fetch(`https://www.dnd5eapi.co/api/classes/${className}`)
+    fetch(`https://www.dnd5eapi.co/api/classes/${classSelection}`)
       .then(res => res.json())
       .then(data => {
         setClassProficiencies(data.proficiencies)
@@ -22,13 +22,13 @@ export default function ClassFeatures(props) {
         }
       })
       // The dnd API is a pretty spread out one, so we have to fetch twice in this component.
-      fetch(`https://www.dnd5eapi.co/api/classes/${className}/levels`)
+      fetch(`https://www.dnd5eapi.co/api/classes/${classSelection}/levels`)
       .then(res => res.json())
       .then(data => {
         setClassFeatures(data[0].features);
         setLoaded(true)
       })
-  }, [props, className])
+  }, [props, classSelection])
 
   function handleAccordionClick(indexNum){
     const newIndex = accordionIndex === indexNum ? -1 : indexNum
