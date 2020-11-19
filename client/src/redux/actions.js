@@ -10,7 +10,9 @@ export const SET_WIS = 'SET_WIS'
 export const SET_INT = 'SET_INT' 
 export const SET_CHA = 'SET_CHA' 
 export const SET_STATCALC = 'SET_STATCALC'
-export const SET_STATSUBMITTED = 'SET_STATSUBMITTED'
+export const SET_CHARSUBMITTED = 'SET_CHARSUBMITTED'
+export const SET_BACKGROUND = 'SET_BACKGROUND'
+
 
 
 
@@ -19,6 +21,15 @@ export function setRace(race) {
         type: SET_RACE,
         payload: {
             race
+        }
+    }
+}
+
+export function setBackground(background) {
+    return {
+        type: SET_BACKGROUND,
+        payload: {
+            background
         }
     }
 }
@@ -69,11 +80,11 @@ export function setStatCalc(statName, pointValue){
     }
 }
 
-export function setStatSubmitted(statSubmitted){
+export function setCharSubmitted(charSubmitted){
     return {
-        type: SET_STATSUBMITTED,
+        type: SET_CHARSUBMITTED,
         payload: {
-            statSubmitted
+            charSubmitted
         }
     }
 }

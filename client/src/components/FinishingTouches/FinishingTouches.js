@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Form, Header, Segment } from 'semantic-ui-react'
-import { setName, setStatCalc } from '../../redux/actions'
+import {  Header, Segment } from 'semantic-ui-react'
+import {  setStatCalc } from '../../redux/actions'
 import Attributes from './Attributes'
+import Name from './Name'
 
 export default function FinishingTouches() {
-    const [nameChange, setNameChange] = useState('')
     const race = useSelector((state)=> state.race)
     const classSelection = useSelector((state)=> state.classSelection)
-    const name = useSelector((state) => state.name)
     const dispatch = useDispatch()
 
-    function handleNameSelect(nameChange) {
-      dispatch(setName(nameChange))
-    }
+    
     //This makes sure we have a clean stats array.
     useEffect(()=>{
           dispatch(setStatCalc('Strength', [0,8]))
@@ -30,16 +27,7 @@ export default function FinishingTouches() {
             I see, a{race === 'elf' && 'n'} {race} {classSelection}! <br /> Now for the finishing touches...
         </Header>
         <Segment textAlign='left' inverted>
-            <Form inverted>
-              <Form.Field width="6">
-                { name === '' &&
-                <h3>What will this character's name be?</h3>}
-                { name !== '' &&
-                <h3>This character's name is {name}.</h3>}
-                <input placeholder='Name' onChange={(e) => {setNameChange(e.target.value)}} style={{width:'250px'}}/>
-              </Form.Field>
-              <Button onClick={() => handleNameSelect(nameChange)}>Glory to their Name!</Button>
-            </Form>
+            <Name/>
             <Attributes />
         </Segment>
       </div>

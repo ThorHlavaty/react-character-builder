@@ -32,7 +32,7 @@ export default function CharacterSheet() {
       {character.name}, the {character.race.charAt(0).toUpperCase()}{character.race.slice(1)} {character.class.charAt(0).toUpperCase()}{character.class.slice(1)}
       </Header>
       <Grid celled stackable>
-        <CharacterStats stats={statArray} />
+        <CharacterStats race={character.race} stats={statArray} />
       </Grid>
     </Segment>}</>
   )

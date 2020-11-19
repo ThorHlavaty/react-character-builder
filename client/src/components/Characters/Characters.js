@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Grid, Header } from 'semantic-ui-react';
 import Character from './Character';
 
 export default function Characters() {
   const [characters, setCharacters] = useState([])
+  const charSubmitted = useSelector(state => state.charSubmitted)
   
   useEffect(() => {
     fetch('/api/v1/characters')
       .then(res => res.json())
       .then(data => {
-        setCharacters(data);
+        if(charSubmitted){
+        setCharacters(data)
+      }
       })
-  }, [])
+  }, [charSubmitted])
 
   
   

@@ -1,5 +1,6 @@
 import React, {  useState } from 'react'
 import {  useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Button, Grid, Header } from 'semantic-ui-react'
 import Attribute from './Attribute'
 
@@ -15,7 +16,9 @@ export default function Attributes() {
     const wis = useSelector(state=> state.pointCalculator['Wisdom'][state.pointCalculator['Wisdom'].length - 1])
     const int = useSelector(state=> state.pointCalculator['Intelligence'][state.pointCalculator['Intelligence'].length - 1])
     const cha = useSelector(state=> state.pointCalculator['Charisma'][state.pointCalculator['Charisma'].length - 1])
+    const history = useHistory()
     let usedPoints = 0
+    
     //All this does is allow us to access the names of the pointCalculator as an array, so we can easily loop over it.
     //That makes it easy to check how many points the user has used.
     Object.keys(points).forEach(name => {usedPoints += points[name][0]})
@@ -48,6 +51,9 @@ export default function Attributes() {
             }
         })
         .then(res =>res.json())
+        .then(() =>{
+          history.push('/characters')
+        })
           }
         } 
       }
@@ -63,7 +69,7 @@ export default function Attributes() {
         <Grid columns={3} style={{marginTop:"10px"}}>
           <Grid.Row>
             {attributeArray.map((attribute, index) => {
-                return <Grid columns={2} doubling ><Attribute key={index} attribute={attribute} /></Grid>
+                return <Grid columns={2} doubling key={index}><Attribute attribute={attribute} /></Grid>
             })}
           </Grid.Row>
         </Grid>

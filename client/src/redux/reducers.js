@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const {  SET_RACE, SET_CLASS, SET_NAME, SET_HALFELFBONUSSTATS, SET_STATSUBMITTED, RESET_HALFELFBONUSSTATS, SET_STATCALC } = require("./actions");
+const {  SET_RACE, SET_CLASS, SET_NAME, SET_HALFELFBONUSSTATS, RESET_HALFELFBONUSSTATS, SET_STATCALC, SET_CHARSUBMITTED, SET_BACKGROUND } = require("./actions");
 
 
 
@@ -8,6 +8,18 @@ function raceReducer(state='', action) {
     switch (action.type) {
         case SET_RACE:
             return action.payload.race
+        
+        
+            
+            default:
+            return state;
+    }
+}
+
+function backgroundReducer(state='', action) {
+    switch (action.type) {
+        case SET_BACKGROUND:
+            return action.payload.background
         
         
             
@@ -65,10 +77,10 @@ function pointCalculatorReducer(state={"Strength":[0,8],"Dexterity":[0,8],"Const
     }
 }
 
-function statSubmittedReducer(state=false, action) {
+function charSubmittedReducer(state=true, action) {
     switch (action.type) {
-        case SET_STATSUBMITTED:
-            return action.payload.statSubmitted
+        case SET_CHARSUBMITTED:
+            return action.payload.charSubmitted
         
         
             
@@ -83,5 +95,6 @@ export const rootReducer = combineReducers({
     name: nameReducer,
     halfElfBonusStats: halfElfBonusStatsReducer,
     pointCalculator: pointCalculatorReducer,
-    statSubmitted: statSubmittedReducer
+    charSubmitted: charSubmittedReducer,
+    background: backgroundReducer
 })

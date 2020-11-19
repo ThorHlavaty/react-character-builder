@@ -72,17 +72,17 @@ export default function ClassCard(props) {
                 </h2>
                 <p style={{textAlign:"left", fontSize:"14px"}}>
                 Proficencies: {classProficiencies.map((proficiency, index) => {
-                  return proficiency.name + " ♦ " })}
+                  return <span key={index}>{proficiency.name + " ♦ "}</span> })}
                 </p>
                 <p style={{textAlign:"left", fontSize:"14px"}}>
-                    Features: {classFeatures.map(feature => {
-                        return feature.name + " ♦ "
+                    Features: {classFeatures.map((feature, index) => {
+                        return <span key={index}>{feature.name + " ♦ "}</span>
                     })}
                 </p>
                 {/* This checks if the class can cast spells. If so, we render the details and make them clickable if you want to learn more. */}
                 {spellCaster && <><h2>As a spellcaster:</h2>
                 <p style={{textAlign:"left"}}>{spellCasterData.map((description, index) => {                        
-                    return <Accordion>
+                    return <Accordion key={index}>
                       <Accordion.Title
                         active={accordionIndex === index}
                         index={index}

@@ -28,7 +28,7 @@ export default function ClassFeatures(props) {
         setClassFeatures(data[0].features);
         setLoaded(true)
       })
-  }, [props])
+  }, [props, className])
 
   function handleAccordionClick(indexNum){
     const newIndex = accordionIndex === indexNum ? -1 : indexNum
@@ -39,16 +39,16 @@ export default function ClassFeatures(props) {
     <>{loaded && <div>
       <p>
         Proficencies: {classProficiencies.map((proficiency, index) => {
-          return proficiency.name + " ♦ " })}
+          return <span key={index}>{proficiency.name + " ♦ " }</span>})}
       </p>
       <p>
-        Features: {classFeatures.map(feature => {
-          return feature.name + " ♦ "
+        Features: {classFeatures.map((feature, index) => {
+          return <span key={index}> {feature.name + " ♦ "} </span>
         })}
       </p>
       {spellCaster && <><h4>Spellcasting Abilities:</h4>
         <p>{spellCasterData.map((description, index) => {                        
-            return <Accordion>
+            return <Accordion key={index}>
               <Accordion.Title
                 active={accordionIndex === index}
                 index={index}

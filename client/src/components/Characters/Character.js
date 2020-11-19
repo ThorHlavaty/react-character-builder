@@ -1,8 +1,12 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button, Divider, Grid, Icon, Segment } from 'semantic-ui-react'
+import { setCharSubmitted } from '../../redux/actions'
 
 export default function Character(props) {
+  const dispatch = useDispatch()
+  
   function colorSelector(){
     if(props.character.class === 'barbarian') {
       return 'red'
@@ -43,10 +47,11 @@ export default function Character(props) {
   }
   
   function handleDelete(){
-      fetch(`/api/v1/post/${props.character.id}`, {
+      fetch(`/api/v1/characters/${props.character.id}`, {
         method: 'DELETE'})
         .then(res => {
-           console.log('gone')
+          dispatch(setCharSubmitted(false))
+          dispatch(setCharSubmitted(true))
           }
         )
       }
@@ -89,19 +94,6 @@ export default function Character(props) {
           <Grid.Row>
             <Grid.Column textAlign="left" style={{borderRight:'1px solid dimgray'}}> 
               Race: 
-            </Grid.Column>
-            <Grid.Column textAlign='right'>
-              {props.character.race.charAt(0).toUpperCase()}{props.character.race.slice(1)}
-            </Grid.Column>            
-          </Grid.Row>
-        </Grid>
-      </Segment>
-      <Segment color={`${colorSelector()}`} inverted style={{marginTop:"0px", marginBottom:'0px', borderRadius:'0px', padding:'10px', borderBottom:'1px solid dimgray', fontSize:"20px"}}>
-        <Grid columns={2} as={Link} to={`/characters/${props.character.id}`} style={{color:'White'}}>
-          <Divider vertical hidden/>
-          <Grid.Row>
-            <Grid.Column textAlign="left" style={{borderRight:'1px solid dimgray'}}> 
-              Background: 
             </Grid.Column>
             <Grid.Column textAlign='right'>
               {props.character.race.charAt(0).toUpperCase()}{props.character.race.slice(1)}

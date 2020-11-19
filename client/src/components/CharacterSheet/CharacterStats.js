@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Container, Grid, Header, Segment } from 'semantic-ui-react'
+import {  Grid, Header, Segment } from 'semantic-ui-react'
 import ClassFeatures from './ClassFeatures'
+import Equipment from './Equipment'
+import RacialTraits from './RacialTraits'
 
 export default function CharacterStats(props) {
   const className = useSelector(state=>state.class)
@@ -32,9 +34,7 @@ export default function CharacterStats(props) {
         </Segment>
       </Grid.Column >
       <Grid.Column width={12} only='computer tablet'>
-        <Header>
-          Racial Traits
-        </Header>
+        <RacialTraits race={props.race}/>
       </Grid.Column>
     </Grid.Row>
     <Grid.Row>
@@ -49,12 +49,8 @@ export default function CharacterStats(props) {
         </Segment>
     </Grid.Column>
     <Grid.Column width={12} only='computer tablet'>
-        <Header>
-          Class Traits
-        </Header>
-        <Container>
-        </Container>
-      </Grid.Column>
+        <Equipment className={className}/>
+    </Grid.Column>
     </Grid.Row>
     <Grid.Row>
     <Grid.Column width={2}>
@@ -68,16 +64,10 @@ export default function CharacterStats(props) {
         </Segment>
       </Grid.Column>
       <Grid.Column width={12} only='mobile'>
-        <Header>
-          Racial Traits
-        </Header>
+        <RacialTraits race={props.race}/>
       </Grid.Column>    
       <Grid.Column width={12} only='mobile'>
-        <Header>
-          Class Traits
-        </Header>
-        <Container>
-        </Container>
+        <Equipment className={className}/>
       </Grid.Column>
       <Grid.Column width={12}>
         <Header>
