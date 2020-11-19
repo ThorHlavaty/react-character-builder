@@ -5,6 +5,8 @@ import DndHeader from './components/DndHeader/DndHeader';
 import HomePage from './components/HomePage/HomePage';
 import { Route, Switch } from 'react-router-dom';
 import FinishingTouches from './components/FinishingTouches/FinishingTouches';
+import Characters from './components/Characters/Characters';
+import CharacterSheet from './components/CharacterSheet/CharacterSheet';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Route path='/races' component={Races} />
       <Route path='/classes' component={Classes} />
       <Route path='/stats' component={FinishingTouches} />
+      <Route path='/characters' exact component={Characters} />
+      <Route path='/characters/:id'  component={CharacterSheet} />
       </Switch>
     </div>
   );

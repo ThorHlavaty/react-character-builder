@@ -40,7 +40,7 @@ export default function RaceCard(props) {
         
             <Grid.Row> 
                 <Grid.Column width={4}>
-            <Image src={`/racesImages/${raceData.index}.jpg`} alternate='' fluid ui={false} />
+            <Image src={`../racesImages/${raceData.index}.jpg`} alternate='' fluid ui={false} />
                 </Grid.Column> 
             
             <Grid.Column width={12}>

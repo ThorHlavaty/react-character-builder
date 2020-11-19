@@ -71,8 +71,8 @@ export default function ClassCard(props) {
                     {classData.name}<Button color='red' style={{marginLeft:"10px"}} onClick={() => handleSelection(classData.index)}>+select class</Button>
                 </h2>
                 <p style={{textAlign:"left", fontSize:"14px"}}>
-                Proficencies: {classProficiencies.map(proficiency => {
-                  return proficiency.name + " ♦ "})}
+                Proficencies: {classProficiencies.map((proficiency, index) => {
+                  return proficiency.name + " ♦ " })}
                 </p>
                 <p style={{textAlign:"left", fontSize:"14px"}}>
                     Features: {classFeatures.map(feature => {
@@ -91,10 +91,8 @@ export default function ClassCard(props) {
                                     >
                         {description.name}   
                       </Accordion.Title>
-                      <Accordion.Content active={accordionIndex === index}>
-                        <p>
-                          {description.desc}
-                        </p>
+                      <Accordion.Content active={accordionIndex === index}>                        
+                          {description.desc}                        
                       </Accordion.Content>
                     </Accordion>
                     })} </p></>}

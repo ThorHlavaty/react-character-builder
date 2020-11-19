@@ -63,7 +63,7 @@ export default function Attributes() {
         <Grid columns={3} style={{marginTop:"10px"}}>
           <Grid.Row>
             {attributeArray.map((attribute, index) => {
-                return <Attribute key={index} attribute={attribute} />
+                return <Grid columns={2} doubling ><Attribute key={index} attribute={attribute} /></Grid>
             })}
           </Grid.Row>
         </Grid>

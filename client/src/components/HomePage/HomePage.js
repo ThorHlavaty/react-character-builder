@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button, Header, Segment } from 'semantic-ui-react'
+import { setClass } from '../../redux/actions'
 
 export default function HomePage() {
+    const dispatch = useDispatch()
+    
+    useEffect(()=>{
+        dispatch(setClass(''))
+    })
+    
     return (
         <Segment color='black' inverted style={{borderRadius:"0px", marginTop:"0px", height:"100vh"}}>
             
@@ -18,7 +26,7 @@ export default function HomePage() {
             </Button>
             </Link>
             <br />
-            <Button color="red" style={{marginTop:"10px", width:"250px", border:"solid 1px dimgrey"}}>
+            <Button as={Link} to='/characters' color="red" style={{marginTop:"10px", width:"250px", border:"solid 1px dimgrey"}}>
                 Show me that which is Thorged
             </Button>
         </Segment>

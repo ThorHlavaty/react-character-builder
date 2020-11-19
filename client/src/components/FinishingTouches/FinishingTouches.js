@@ -36,7 +36,7 @@ export default function FinishingTouches() {
                 <h3>What will this character's name be?</h3>}
                 { name !== '' &&
                 <h3>This character's name is {name}.</h3>}
-                <input placeholder='Name' onChange={(e) => {setNameChange(e.target.value)}}/>
+                <input placeholder='Name' onChange={(e) => {setNameChange(e.target.value)}} style={{width:'250px'}}/>
               </Form.Field>
               <Button onClick={() => handleNameSelect(nameChange)}>Glory to their Name!</Button>
             </Form>
