@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# The Thorge, A D&D 5E Generator.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+https://react-character-builder.herokuapp.com/
 
-In the project directory, you can run:
+I'm a big fan of Dungeons and Dragons, and I especially love the logic behind character creation. I thought that one particularly fun endeavor would be to use react and redux to create an online character generator. It's open to everyone, so if you make a character using this app, everyone can see it. Feel free to use swear words!
 
-### `npm start`
+## Code Samples
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ternary statements to conditionally display stat options:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`{ usedPoints < 27 ? <option value='1,9'>9 (1 point)</option> : <option disabled='disabled' value='1,9'>9 (1 point)</option>}`
 
-### `npm test`
+Complex method combinations to reference api data:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```(.then(data => {
+        setEquipment(data.starting_equipment)
+        setStartingEquipment(data.starting_equipment_options
+          .filter(option=>option.from[0] && option.from[0].equipment)
+          .map(option => option.from[0].equipment.name))
+}))
+```
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React and Redux were used in combination with Node.js for all of the site's rendering. Styling was primarily done inline, and with Semantic UI's React suite.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Postgres, Express, and Sequelize were used to create the database and the associated routes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The data was primarily fetched from a D&D api (https://www.dnd5eapi.co/). It was fun to use. The data was a little spread out and tricky to access, but it was also free, so I can't complain.
